@@ -36,7 +36,7 @@
 
 h1 {
     font-family: "IntegralCF";
-    font-weight: 400;
+    font-weight: 600;
     font-size: 55px;
     line-height: 72px;
 }
