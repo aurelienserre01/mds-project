@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* POPPINS */
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../css/fonts/Poppins/Poppins-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../css/fonts/Poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../css/fonts/Poppins/Poppins-SemiBold.ttf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../css/fonts/Poppins/Poppins-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../css/fonts/Poppins/Poppins-ExtraBold.ttf");
+    font-weight: 800;
+}
+
+
+
+@font-face {
+    font-family: "IntegralCF";
+    src: url("../css/fonts/IntegralCF/IntegralCF-ExtraBold.otf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "IntegralCF";
+    src: url("../css/fonts/IntegralCF/IntegralCF-Regular.otf")
+}
+
+@font-face {
+    font-family: "IntegralCF";
+    src: url("../css/fonts/IntegralCF/IntegralCF-Bold.otf");
+    font-weight: 700;
+}
