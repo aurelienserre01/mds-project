@@ -1,20 +1,21 @@
 <template>
-    <div class="homeHero bg-black h-screen">
+    <div class="homeHero z-40 bg-black min-h-screen">
         <div class="header text-white uppercase text-center pt-4">
             infline
         </div>
-        <div class=" grid auto-rows-auto grid-flow-col max-w-[90%] ml-auto mr-auto">
-            <div class="pl-20">
-                <div class="w-[65%] titre text-white mt-36 items-center">
-                    <h1>La platemforme n°1 pour trouver un <span class="wordart text-black">influenceur</span></h1>
+        <div class="flex-row md:flex w-full mr-auto ml-auto">
+            <div class="w-[100vw] md:w-[50vw] ">
+                <div class="titre text-white mt-6 md:mt-36 w-[500px] text-center md:text-left">
+                    <h1 class="">La platemforme n°1 pour trouver un <span class="wordart text-black">influenceur</span></h1>
+                    <!-- <h1 class="md:text-5xl text-4xl">La platemforme n°1 pour trouver un <span class="wordart text-black">influenceur</span></h1> -->
                 </div>
-                <div class="buttons mt-16 pb-32">
+                <div class="buttons md:flex md:mt-16 md:pb-32">
                     <SharedButton class="mr-8" message="Je suis influenceur" />
                     <SharedButton message="Je suis une marque" color="purple" />
                 </div>
             </div>
-            <div class=" image mt-auto pt-28 pr-16">
-                <img src="~/assets/images/femme_selfie.png" alt="Femme prenant un selfie">
+            <div class="w-[100vw] md:w-[50vw] md:mt-32 image object-center mt-aut z-40">
+                <img class="mr-auto ml-auto" src="~/assets/images/femme_selfie.png" alt="Femme prenant un selfie">
             </div>
         </div>
     </div>
@@ -37,7 +38,7 @@
 h1 {
     font-family: "IntegralCF";
     font-weight: 600;
-    font-size: 55px;
-    line-height: 72px;
+    line-height: 100%;
+    font-size: 3vw;
 }
 </style>

@@ -1,6 +1,12 @@
 <template>
     <HomeHero />
     <HomeDescription />
+    <HomeRelation />
+    <HomeCollaborations />
+    <HomeDomain />
+    <HomeJeremy />
+    <HomeNews />
+    <Footer />
 </template>
 <script setup lang="ts">
 </script>

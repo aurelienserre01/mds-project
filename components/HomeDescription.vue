@@ -1,5 +1,5 @@
 <template>
-    <div class="-mt-32 bg-purple flex-row p-48">
+    <div class="-translate-y-32 z-0 bg-purple flex-row p-48">
         <div class="images flex w-[60%] ml-auto mr-auto items-center justify-between">
             <img src="~/assets/images/logo/logoNike.png" alt="">
             <img src="~/assets/images/logo/logoBk.png" alt="">
