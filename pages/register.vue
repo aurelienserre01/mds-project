@@ -69,6 +69,21 @@
 import Button from '~/components/shared/Button.vue';
 
 const showPassword = ref(false);
+
+
+
+
+</script>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
+    data() {
+        return {
+
+        }
+    }
+})
 </script>
 <style scoped>
 .communaute {
@@ -102,18 +117,19 @@ h3 {
     font-size: 30px;
 }
 
-label{
+label {
     font-family: "Poppins";
     color: #999999;
     font-size: 13px;
 }
 
-.password-forget{
+.password-forget {
     font-family: "Poppins";
     color: #999999;
     font-size: 13px;
 }
-.continue{
+
+.continue {
     font-family: "Poppins";
     color: #999999;
     font-size: 14px;

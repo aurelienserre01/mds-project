@@ -1,5 +1,5 @@
 <template>
-    <div class="flex p-14 -mt-32 mb-32">
+    <div class="flex p-14 -translate-y-1/3">
         <div class="w-[50%]">
             <img src="~/assets/images/femme_chapeau.png" alt="" class="mr-auto ml-auto">
         </div>
