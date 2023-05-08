@@ -1,15 +1,17 @@
 <template>
     <div class="w-full h-screen flex p-5">
         <div class="left w-[50vw] h-full ">
-            <div class="mt-4 ml-4">
-                <div class="title">INFLINE</div>
-            </div>
+            <NuxtLink to="/">
+                <div class="mt-4 ml-4">
+                    <div class="title">INFLINE</div>
+                </div>
+            </NuxtLink>
             <div class="w-[50%] m-auto my-20">
                 <div>
                     <h3>SE CONNECTER</h3>
                     <div class="my-6">
                         <p>Si tu n'es pas encore inscrit.</p>
-                        <p>Tu peux <span class="text-purple">t'inscrire ici !</span></p>
+                        <p>Tu peux <NuxtLink to="/register"><span class="text-purple">t'inscrire ici !</span></NuxtLink></p>
                     </div>
                 </div>
                 <div class="form">
@@ -19,7 +21,7 @@
                             <img src="~/assets/images/login/email.svg" alt="">
                             <input
                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                                placeholder="Entre ton adresse mail" type="email" name="email" id="email">
+                                placeholder="Entre ton adresse mail" type="email" name="email" id="email" v-model="email">
                         </div>
                     </div>
                     <div class="password mb-2">
@@ -28,8 +30,11 @@
                             <img src="~/assets/images/login/password.svg" alt="">
                             <input
                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                                placeholder="Entre ton mot de passe" :type="showPassword ? 'text' : 'password'"
-                                name="password" id="password">
+                                placeholder="Entre ton mot de passe" 
+                                :type="showPassword ? 'text' : 'password'"
+                                name="password" 
+                                id="password" 
+                                v-model="password">
                             <img @click="showPassword = !showPassword" src="~/assets/images/login/eyes.svg" alt="">
                         </div>
                     </div>
@@ -43,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <Button class="my-12" message="Se connecter" color="purple" />
+                <Button @click="login()" class="my-12" message="Se connecter" color="purple" />
                 <div class="logo flex flex-col items-center">
                     <div class="continue">Ou continue avec</div>
                     <div class="flex mt-8 justify-evenly bg">
@@ -72,9 +77,28 @@
     </div>
 </template>
 <script setup lang="ts">
+import axios from 'axios';
 import Button from '~/components/shared/Button.vue';
 
 const showPassword = ref(false);
+const email = ref('');
+const password = ref('');
+const userModel = ref({});
+
+async function login() {
+    if (email.value != '' && password.value != '' ) {
+        const response = await axios.post('http://localhost:1337/api/auth/local', { identifier: email.value, password: password.value});
+        storeLoggedInUser(response.data)
+        navigateTo('/map')
+    }
+   
+}
+
+function storeLoggedInUser(user: any) {
+    userModel.value = user;
+    window.localStorage.setItem('rememberMe', JSON.stringify(user));
+}
+
 </script>
 <style scoped>
 .communaute {

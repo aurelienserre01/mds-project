@@ -1,15 +1,18 @@
 <template>
     <div class="w-full h-screen flex p-5">
         <div class="left w-[50vw] h-full ">
-            <div class="mt-4 ml-4">
-                <div class="title">INFLINE</div>
-            </div>
+            <NuxtLink to="/">
+                <div class="mt-4 ml-4">
+                    <div class="title">INFLINE</div>
+                </div>
+            </NuxtLink>
             <div class="w-[50%] m-auto my-20">
                 <div>
                     <h3>S'inscrire</h3>
                     <div class="my-6">
                         <p>Tu es déjà inscrit ?</p>
-                        <p>Tu peux <span class="text-purple">te connecter ici !</span></p>
+                        <p>Tu peux <NuxtLink to="/login"><span class="text-purple">te connecter ici !</span></NuxtLink>
+                        </p>
                     </div>
                 </div>
                 <div class="form">
@@ -19,7 +22,7 @@
                             <img src="~/assets/images/login/email.svg" alt="">
                             <input
                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                                placeholder="Entre ton adresse mail" type="email" name="email" id="email">
+                                placeholder="Entre ton adresse mail" type="email" name="email" id="email" v-model="email">
                         </div>
                     </div>
                     <div class="password my-10">
@@ -29,7 +32,7 @@
                             <input
                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                                 placeholder="Entre ton mot de passe" :type="showPassword ? 'text' : 'password'"
-                                name="password" id="password">
+                                name="password" id="password" v-model="password">
                             <img @click="showPassword = !showPassword" src="~/assets/images/login/eyes.svg" alt="">
                         </div>
                     </div>
@@ -40,12 +43,12 @@
                             <input
                                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                                 placeholder="Confirme ton mot de passe" :type="showPassword ? 'text' : 'password'"
-                                name="password" id="password">
+                                name="password" id="password" v-model="passwordConfirm">
                             <img @click="showPassword = !showPassword" src="~/assets/images/login/eyes.svg" alt="">
                         </div>
                     </div>
                 </div>
-                <Button class="my-12" message="S'inscrire" color="purple" />
+                <Button @click="register()" class="my-12" message="S'inscrire" color="purple" />
             </div>
         </div>
         <div class="bg-black w-[50vw] rounded-2xl p-3">
@@ -67,23 +70,35 @@
 </template>
 <script setup lang="ts">
 import Button from '~/components/shared/Button.vue';
-
+import axios from 'axios';
 const showPassword = ref(false);
+const success = ref(true);
+const email = ref('');
+const password = ref('');
+const passwordConfirm = ref('');
+const userModel = ref({})
 
 
-
-
-</script>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-export default defineComponent({
-    data() {
-        return {
-
+async function register() {
+    if (email.value != '' && password.value != '' && passwordConfirm.value != '') {
+        try {
+            const response = await axios.post('http://localhost:1337/api/auth/local/register', { username: email.value, email: email.value, password: password.value });
+            storeLoggedInUser(response.data)
+        } catch (error) {
+            success.value = false
         }
+    } else {
+        success.value = false
     }
-})
+
+    if (success.value) {
+        navigateTo('/map')
+    }
+}
+function storeLoggedInUser(user: any) {
+    userModel.value = user;
+    window.localStorage.setItem('rememberMe', JSON.stringify(user));
+}
 </script>
 <style scoped>
 .communaute {
