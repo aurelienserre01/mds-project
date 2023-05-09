@@ -12,6 +12,7 @@
     </div>
 </template>
 <script setup lang="ts">
+import Button from "~~/components/shared/Button.vue";
 defineProps<{
     description: string
     nom: string
